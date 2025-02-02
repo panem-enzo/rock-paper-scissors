@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    choice = Math.random();
+    let choice = Math.random(); // random double from 0->1
     if (choice < 1/3) {
         return 'rock'
     } else if (choice >= 1/3 && choice < 2/3) {
@@ -9,19 +9,12 @@ function getComputerChoice() {
     }
 }
 
-rockCount = 0;
-scissorCount = 0;
-paperCount = 0;
-
-for (i=0; i<100; i++) {
-    choice = getComputerChoice();
-    if (choice === 'rock') {
-        rockCount++;
-    } else if (choice === 'scissors') {
-        scissorCount++;
-    } else {
-        paperCount++;
-    }
+function getHumanChoice() {
+    return prompt('Enter your choice (rock, paper, or scissors):').toLowerCase();
 }
 
-console.log(`# rocks: ${rockCount}\n # papers: ${paperCount}\n # scissors: ${scissorCount}`);
+let validChoice = false;
+while (!validChoice) {
+    let choice = getHumanChoice();
+    if (choice == 'rock' || choice == 'paper' || choice == 'scissors') validChoice = true;
+}
