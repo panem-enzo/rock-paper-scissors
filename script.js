@@ -13,25 +13,6 @@ function getHumanChoice() {
   return prompt("Enter your choice (rock, paper, or scissors):").toLowerCase();
 }
 
-// Validate human choice
-
-let humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-
-let validChoice = false;
-while (!validChoice) {
-  if (
-    humanChoice == "rock" ||
-    humanChoice == "paper" ||
-    humanChoice == "scissors"
-  )
-    validChoice = true;
-  else {
-    console.log("Invalid input. Try again");
-    humanChoice = getHumanChoice();
-  }
-}
-
 function playGame() {
   // Scorekeeping
 
@@ -40,7 +21,7 @@ function playGame() {
 
   // playRound
 
-  function playRound(humanChoice, computerChoice) {
+  function playRound(computerChoice, humanChoice) {
     if (humanChoice === "rock" && computerChoice === "paper") {
       console.log("You lose! Paper beats Rock");
       computerScore++;
@@ -62,9 +43,23 @@ function playGame() {
     } else {
       console.log("It's a draw!");
     }
+  }
 
+  for (i = 0; i < 5; i++) {
+    playRound(getComputerChoice(), getHumanChoice());
     console.log(`Your Score: ${humanScore} | CPU Score: ${computerScore}`);
   }
 
-  playRound(humanChoice, computerChoice);
+  // Game Complete
+
+  if (humanScore > computerScore) {
+    console.log('Game Over! You WON the game');
+  } else if (humanScore < computerScore) {
+    console.log('Game Over! You LOST the game');
+  } else {
+    console.log('Game Over! It\'s a Draw');
+  }
+
 }
+
+playGame();
