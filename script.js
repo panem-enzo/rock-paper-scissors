@@ -7,10 +7,9 @@ const getComputerChoice = () => {
   } else {
     return "scissors";
   }
-}
+};
 
 const playGame = () => {
-
   let humanScore = 0;
   let computerScore = 0;
   let winningScore = 5;
@@ -36,6 +35,8 @@ const playGame = () => {
   scoreboard.appendChild(score);
 
   function playRound(computerChoice, humanChoice) {
+    scoreboard.setAttribute("style", "border: solid");
+
     if (humanChoice === "rock" && computerChoice === "paper") {
       log.textContent = "You lose! Paper beats Rock";
       computerScore++;
@@ -79,6 +80,6 @@ const playGame = () => {
       endGame();
     }
   }
-}
+};
 
 playGame();
