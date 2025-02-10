@@ -20,6 +20,21 @@ function playGame() {
   let computerScore = 0;
 
   // playRound
+  const rockBtn = document.querySelector(".rock");
+  const paperBtn = document.querySelector(".paper");
+  const scissorsBtn = document.querySelector(".scissors");
+
+  rockBtn.addEventListener("click", () => {
+    playRound(getComputerChoice(), "rock");
+  });
+
+  paperBtn.addEventListener("click", () => {
+    playRound(getComputerChoice(), "paper");
+  });
+
+  scissorsBtn.addEventListener("click", () => {
+    playRound(getComputerChoice(), "scissors");
+  }); 
 
   function playRound(computerChoice, humanChoice) {
     if (humanChoice === "rock" && computerChoice === "paper") {
@@ -43,11 +58,7 @@ function playGame() {
     } else {
       console.log("It's a draw!");
     }
-  }
-
-  for (i = 0; i < 5; i++) {
-    playRound(getComputerChoice(), getHumanChoice());
-    console.log(`Your Score: ${humanScore} | CPU Score: ${computerScore}`);
+    numRounds++;
   }
 
   // Game Complete
