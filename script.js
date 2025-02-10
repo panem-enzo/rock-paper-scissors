@@ -60,21 +60,23 @@ const playGame = () => {
 
     score.textContent = `Human Score = ${humanScore} | Computer Score = ${computerScore}`;
 
-    // const endGame = () => {
-    //   rockBtn.removeEventListener("click", buttonCallback("rock"));
-    //   paperBtn.removeEventListener("click", buttonCallback("paper"));
-    //   scissorsBtn.removeEventListener("click", buttonCallback("scissors"));
-    // };
-
+    const selectionDiv = document.querySelector(".selection");
     const resultsDiv = document.querySelector(".results");
     const resultsMsg = document.createElement("p");
     resultsDiv.appendChild(resultsMsg);
 
-    if (humanScore >= winningScore) {
+    function endGame() {
+      selectionDiv.removeChild(rockBtn);
+      selectionDiv.removeChild(paperBtn);
+      selectionDiv.removeChild(scissorsBtn);
+    }
+
+    if (humanScore == winningScore) {
       resultsMsg.textContent = "Game Over! You WON the game";
       endGame();
-    } else if (computerScore >= winningScore) {
+    } else if (computerScore == winningScore) {
       resultsMsg.textContent = "Game Over! You LOST the game";
+      endGame();
     }
   }
 }
